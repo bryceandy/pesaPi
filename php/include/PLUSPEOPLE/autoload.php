@@ -32,8 +32,12 @@
 // default timezone setting. - should be set on a per-server setup.
 date_default_timezone_set("Africa/Nairobi");
 
-function __autoload($class) {
+//removed the deprecated __autoload function 
+function my_autoloader($class) {
 	$fileName = str_replace("\\", "/", $class) . ".php";
 	require_once($fileName);
 }
+
+//spl_autoload_register function replacing __autoload
+spl_autoload_register('my_autoloader');
 ?>
